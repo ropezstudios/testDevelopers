@@ -20,7 +20,7 @@ package  ropez.net{
 	import com.maclema.mysql.MySqlToken;
 	
 	
-	public dynamic class sql extends Sprite{
+	public dynamic class Mysql extends Sprite{
 		
 		// STATIC CONST LISTENERS
 		public static const COMPLETE_CONNECTION:String="COMPLETE_CONNECTION";
@@ -64,15 +64,15 @@ package  ropez.net{
 		private var rs:ResultSet;
 		
 		
-
-		public function sql(host:String="",port:int=0,user:String="",pw:String="",db:String="") {
+// CONNECT CONSTRUCTOR INIT
+		public function Mysql(host:String="",port:int=0,user:String="",pw:String="",db:String="") {
 			
 		
 			connection(host,port,user,pw,db);
 			
 			
 		}
-		
+// CONNECT
 		public function connection(host:String="",port:int=3306,user:String="",pw:String="",db:String=""):void{
 			
 			// GLOBAL VALUES CONNECTION.
@@ -95,7 +95,7 @@ package  ropez.net{
 				return;
 			}
 		
-			// CONNECT 
+		// CONNECT LIB EXTERNAL
 		c= new Connection(this.host,this.port,this.user,this.pw,this.db);
 		c.addEventListener(Event.CONNECT,_CONNECTION);
 		c.connect();
@@ -113,6 +113,7 @@ package  ropez.net{
 			_value_connection=true;
 			dispatchEvent( new Event(COMPLETE_CONNECTION));
 		}
+		
 		
 		public function get value_connection():Boolean{
 			return _value_connection;
